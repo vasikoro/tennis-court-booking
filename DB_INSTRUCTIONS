@@ -1,0 +1,26 @@
+
+quickstart guide:
+login:
+mysql -u root
+
+create user:
+CREATE USER player@localhost IDENTIFIED BY 606060
+
+grant crud privileges to player:
+GRANT ALL PRIVILEGES ON *.* TO player@localhost IDENTIFIED BY 606060
+
+logout:
+\q
+
+login as user:
+mysql -u player -p
+
+
+create database:
+CREATE DATABASE TENNIS_APP;
+
+show databases:
+SHOW DATABASES;
+
+use database:
+USE TENNIS_APP;
