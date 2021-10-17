@@ -20,6 +20,14 @@ public class ContactInfo implements Serializable {
     @Column(name="PHONE", nullable = false)
     private String telephone;
 
+    @ManyToOne
+    @JoinColumn(name = "COURT_ID", referencedColumnName = "COURT_ID")
+    private Court court;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    private User user;
+
     //CONSTRUCTORS
     public ContactInfo() {}
 

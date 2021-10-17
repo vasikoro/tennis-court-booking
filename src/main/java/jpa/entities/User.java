@@ -2,6 +2,8 @@ package jpa.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "USER")
@@ -35,16 +37,17 @@ public class User implements Serializable {
     @Column(name="GENDER", nullable = false, length = 30)
     private String gender;
 
-    @Column(name="ADDRESS", nullable = false)
-    @OneToMany
-    private Long addressId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="ADDRESS_ID", referencedColumnName = "ID")
+    private Address address;
 
-    @Column(name="CONTACT_INFO", nullable = false)
-    @OneToMany
-    private Long contactInfo;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<ContactInfo> contactInfos;
 
     //CONSTRUCTOR
-    public User(){}
+    public User(){
+        contactInfos = new HashSet<>();
+    }
 
     //GETTERS - SETTERS
     public Long getUserId() {
@@ -87,14 +90,6 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Integer getLevel() {
         return level;
     }
@@ -119,38 +114,19 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    public Long getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public Long getContactInfo() {
-        return contactInfo;
+    public Set<ContactInfo> getContactInfos() {
+        return contactInfos;
     }
 
-    public void setContactInfo(Long contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-
-    //TOSTRING
-
-    @Override
-    public String toString() {
-        return "User {" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
-                ", password='" + password + '\'' +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", level=" + level +
-                ", points=" + points +
-                ", gender='" + gender + '\'' +
-                ", addressId=" + addressId +
-                ", contactInfo=" + contactInfo +
-                '}';
+    public void setContactInfos(Set<ContactInfo> contactInfos) {
+        this.contactInfos = contactInfos;
     }
 }
