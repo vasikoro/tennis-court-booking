@@ -9,11 +9,11 @@ import java.util.Set;
 @Table(name = "USER")
 public class User implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    private  static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="USER_ID")
+    @Column(name="USER_ID", unique = true, nullable = false)
     private Long userId;
 
     @Column(name="FIRST_NAME", nullable = false, length = 30)
@@ -38,14 +38,18 @@ public class User implements Serializable {
     private String gender;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="ADDRESS_ID", referencedColumnName = "ID")
+    @JoinColumn(name="ADDRESS", referencedColumnName = "ID")
     private Address address;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<ContactInfo> contactInfos;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<RolePerUser> roles;
+
     //CONSTRUCTOR
     public User(){
+        roles = new HashSet<>();
         contactInfos = new HashSet<>();
     }
 
@@ -128,5 +132,28 @@ public class User implements Serializable {
 
     public void setContactInfos(Set<ContactInfo> contactInfos) {
         this.contactInfos = contactInfos;
+    }
+
+    public Set<RolePerUser> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RolePerUser> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", surName='" + surName + '\'' +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                ", level=" + level +
+                ", points=" + points +
+                ", gender='" + gender + '\'' +
+                ", address=" + address +
+                '}';
     }
 }

@@ -9,11 +9,11 @@ import java.util.Set;
 @Table(name="COURT")
 public class Court implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    private  static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="COURT_ID")
+    @Column(name="COURT_ID", unique = true, nullable = false)
     private  Long courtId;
 
     private String courtName;
@@ -23,7 +23,7 @@ public class Court implements Serializable {
     private String courtType;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="ADDRESS_ID", referencedColumnName = "ID")
+    @JoinColumn(name="ADDRESS", referencedColumnName = "ID")
     private Address address;
 
     @OneToMany(mappedBy = "court", cascade = CascadeType.ALL)
@@ -80,5 +80,16 @@ public class Court implements Serializable {
 
     public void setContactInfos(Set<ContactInfo> contactInfos) {
         this.contactInfos = contactInfos;
+    }
+
+    @Override
+    public String toString() {
+        return "Court{" +
+                "courtId=" + courtId +
+                ", courtName='" + courtName + '\'' +
+                ", courtNumber=" + courtNumber +
+                ", courtType='" + courtType + '\'' +
+                ", address=" + address +
+                '}';
     }
 }

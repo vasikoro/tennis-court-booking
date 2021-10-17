@@ -8,11 +8,11 @@ import java.io.Serializable;
 @Table(name = "ADDRESS")
 public class Address  implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    private  static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name=" ID")
+    @Column(name=" ID", unique = true, nullable = false)
     private Long addressId;
 
     @Column(name="COUNTRY", nullable = false)
@@ -113,5 +113,20 @@ public class Address  implements Serializable {
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", number='" + number + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
     }
 }

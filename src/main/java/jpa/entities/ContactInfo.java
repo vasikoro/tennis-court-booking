@@ -7,11 +7,11 @@ import java.io.Serializable;
 @Table(name="CONTACT_INFO")
 public class ContactInfo implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    private  static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID" , nullable = false)
+    @Column(name="ID" , unique = true, nullable = false)
     private  Long id;
 
     @Column(name="EMAIL", nullable = false)
@@ -21,11 +21,11 @@ public class ContactInfo implements Serializable {
     private String telephone;
 
     @ManyToOne
-    @JoinColumn(name = "COURT_ID", referencedColumnName = "COURT_ID")
+    @JoinColumn(name = "COURT", referencedColumnName = "COURT_ID")
     private Court court;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    @JoinColumn(name = "USER", referencedColumnName = "USER_ID")
     private User user;
 
     //CONSTRUCTORS
@@ -54,5 +54,32 @@ public class ContactInfo implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public void setCourt(Court court) {
+        this.court = court;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactInfo{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", court=" + court +
+                ", user=" + user +
+                '}';
     }
 }
