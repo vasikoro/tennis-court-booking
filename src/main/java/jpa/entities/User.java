@@ -47,10 +47,14 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<RolePerUser> roles;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<UserToGame> games;
+
     //CONSTRUCTOR
     public User(){
         roles = new HashSet<>();
         contactInfos = new HashSet<>();
+        games = new HashSet<>();
     }
 
     //GETTERS - SETTERS
@@ -140,6 +144,14 @@ public class User implements Serializable {
 
     public void setRoles(Set<RolePerUser> roles) {
         this.roles = roles;
+    }
+
+    public Set<UserToGame> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<UserToGame> games) {
+        this.games = games;
     }
 
     @Override

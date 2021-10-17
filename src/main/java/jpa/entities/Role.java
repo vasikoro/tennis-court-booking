@@ -17,6 +17,7 @@ public class Role implements Serializable {
     @Column(name="TYPE", nullable = false)
     private String type;
 
+
     //CONSTRUCTOR
     public Role() {}
 
