@@ -1,9 +1,6 @@
 package jpa.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -13,6 +10,7 @@ public class User implements Serializable {
     public static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USER_ID")
     private Long userId;
 
@@ -28,9 +26,6 @@ public class User implements Serializable {
     @Column(name="USERNAME", nullable = false, length = 30)
     private String userName;
 
-    @Column(name="EMAIL", nullable = false, length = 30)
-    private String email;
-
     @Column(name="LEVEL", nullable = false)
     private Integer level;
 
@@ -41,9 +36,11 @@ public class User implements Serializable {
     private String gender;
 
     @Column(name="ADDRESS", nullable = false)
+    @OneToMany
     private Long addressId;
 
     @Column(name="CONTACT_INFO", nullable = false)
+    @OneToMany
     private Long contactInfo;
 
     //CONSTRUCTOR
