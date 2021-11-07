@@ -1,10 +1,13 @@
 package jpa.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="USER_TO_GAME")
+@Data
 public class UserToGame  implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -22,43 +25,4 @@ public class UserToGame  implements Serializable {
     @JoinColumn(name="GAME", referencedColumnName = "ID")
     private Game game;
 
-    //CONSTRUCTORS
-
-    public UserToGame() {
-    }
-
-    //GETTERS - SETTERS
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    @Override
-    public String toString() {
-        return "UserToGame{" +
-                "id=" + id +
-                ", user=" + user +
-                ", game=" + game +
-                '}';
-    }
 }

@@ -1,5 +1,7 @@
 package jpa.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -10,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name="GAME")
+@Data
 public class Game  implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -35,70 +38,4 @@ public class Game  implements Serializable {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private Set<UserToGame> userToGameSet;
 
-    //CONSTRUCTORS
-
-    public Game() {
-        this.userToGameSet = new HashSet<>();
-    }
-
-    //GETTERS - SETTERS
-
-    public Long getGameId() {
-        return gameId;
-    }
-
-    public void setGameId(Long gameId) {
-        this.gameId = gameId;
-    }
-
-    public LocalDateTime getGameDate() {
-        return gameDate;
-    }
-
-    public void setGameDate(LocalDateTime gameDate) {
-        this.gameDate = gameDate;
-    }
-
-    public String getHasPlayed() {
-        return hasPlayed;
-    }
-
-    public void setHasPlayed(String hasPlayed) {
-        this.hasPlayed = hasPlayed;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public Court getCourt() {
-        return court;
-    }
-
-    public void setCourt(Court court) {
-        this.court = court;
-    }
-
-    public Set<UserToGame> getUserToGameSet() {
-        return userToGameSet;
-    }
-
-    public void setUserToGameSet(Set<UserToGame> userToGameSet) {
-        this.userToGameSet = userToGameSet;
-    }
-
-    @Override
-    public String toString() {
-        return "Game{" +
-                "gameId=" + gameId +
-                ", gameDate=" + gameDate +
-                ", hasPlayed='" + hasPlayed + '\'' +
-                ", duration='" + duration + '\'' +
-                ", court=" + court +
-                '}';
-    }
 }

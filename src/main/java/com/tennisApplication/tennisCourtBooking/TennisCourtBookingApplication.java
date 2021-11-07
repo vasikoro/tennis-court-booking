@@ -1,13 +1,13 @@
-package com.tennisapplication.tenniscourtbooking;
+package com.tennisApplication.tennisCourtBooking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TenniscourtbookingApplication {
+public class TennisCourtBookingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TenniscourtbookingApplication.class, args);
+		SpringApplication.run(TennisCourtBookingApplication.class, args);
 	}
 
 }

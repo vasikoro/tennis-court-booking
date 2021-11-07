@@ -1,10 +1,13 @@
 package jpa.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="CONTACT_INFO")
+@Data
 public class ContactInfo implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -28,58 +31,4 @@ public class ContactInfo implements Serializable {
     @JoinColumn(name = "USER", referencedColumnName = "USER_ID")
     private User user;
 
-    //CONSTRUCTORS
-    public ContactInfo() {}
-
-    //GETTERS - SETTERS
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public Court getCourt() {
-        return court;
-    }
-
-    public void setCourt(Court court) {
-        this.court = court;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "ContactInfo{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", court=" + court +
-                ", user=" + user +
-                '}';
-    }
 }

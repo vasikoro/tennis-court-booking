@@ -1,10 +1,13 @@
 package jpa.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "ROLE_PER_USER")
+@Data
 public class RolePerUser implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -22,42 +25,4 @@ public class RolePerUser implements Serializable {
     @JoinColumn(name="ROLE", referencedColumnName = "ROLE_ID")
     private Role role;
 
-    //CONSTRUCTORS
-    public RolePerUser() {
-    }
-
-    //GETTERS - SETTERS
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "RolePerUser{" +
-                "id=" + id +
-                ", user=" + user +
-                ", role=" + role +
-                '}';
-    }
 }

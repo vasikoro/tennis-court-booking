@@ -1,10 +1,13 @@
 package jpa.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="ROLE")
+@Data
 public class Role implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -17,33 +20,4 @@ public class Role implements Serializable {
     @Column(name="TYPE", nullable = false)
     private String type;
 
-
-    //CONSTRUCTOR
-    public Role() {}
-
-    //GETTERS - SETTERS
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", type='" + type + '\'' +
-                '}';
-    }
 }

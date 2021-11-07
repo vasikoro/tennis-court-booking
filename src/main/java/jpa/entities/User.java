@@ -1,5 +1,8 @@
 package jpa.entities;
 
+import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -7,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USER")
+@Data
 public class User implements Serializable {
 
     private  static final long serialVersionUID = 1L;
@@ -57,115 +61,4 @@ public class User implements Serializable {
         games = new HashSet<>();
     }
 
-    //GETTERS - SETTERS
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Set<ContactInfo> getContactInfos() {
-        return contactInfos;
-    }
-
-    public void setContactInfos(Set<ContactInfo> contactInfos) {
-        this.contactInfos = contactInfos;
-    }
-
-    public Set<RolePerUser> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<RolePerUser> roles) {
-        this.roles = roles;
-    }
-
-    public Set<UserToGame> getGames() {
-        return games;
-    }
-
-    public void setGames(Set<UserToGame> games) {
-        this.games = games;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
-                ", password='" + password + '\'' +
-                ", userName='" + userName + '\'' +
-                ", level=" + level +
-                ", points=" + points +
-                ", gender='" + gender + '\'' +
-                ", address=" + address +
-                '}';
-    }
 }
